@@ -35,7 +35,9 @@ app.get("/login", (req, res) => {
         return res
             .cookie("token", token, {
                 httpOnly: true,
+                domain: process.env.RENDER_EXTERNAL_HOSTNAME || "localhost",
                 secure: process.env.NODE_ENV === "production",
+                sameSite: "strict"
             })
             .status(200)
             .json({ message: "Logged in successfully" });
