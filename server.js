@@ -37,7 +37,7 @@ app.get("/login", (req, res) => {
                 httpOnly: true,
                 domain: process.env.RENDER_EXTERNAL_HOSTNAME || "localhost",
                 secure: process.env.NODE_ENV === "production",
-                sameSite: "strict"
+                sameSite: "none"
             })
             .status(200)
             .json({ message: "Logged in successfully" });
